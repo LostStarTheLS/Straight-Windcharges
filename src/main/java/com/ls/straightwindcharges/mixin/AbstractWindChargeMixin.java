@@ -1,12 +1,12 @@
 package com.ls.straightwindcharges.mixin;
 
+import net.minecraft.world.entity.projectile.windcharge.AbstractWindCharge;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Resets the vanilla direction-derived acceleration at wind-charge creation. */
-@Mixin(targets = "net.minecraft.world.entity.projectile.windcharge.AbstractWindCharge")
+@Mixin(AbstractWindCharge.class)
 abstract class AbstractWindChargeMixin implements WindChargeMarker {
     @Inject(method = "<init>", at = @At("RETURN"))
     private void sw$clearAccelerationAfterWindChargeConstruction(CallbackInfo ci) {
