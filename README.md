@@ -4,7 +4,7 @@ A Fabric mod for Minecraft 1.21.11 that makes Wind Charges travel on a straight 
 
 ## Build
 
-Requirements: Java 21 (JDK), and `curl` or `wget` plus `unzip` the first time the included lightweight Gradle bootstrap is run. The bootstrap downloads the pinned Gradle 8.14.3 distribution to the normal Gradle user cache.
+Requirements: Java 21 (JDK), and `curl` or `wget` plus `unzip` the first time the included lightweight Gradle bootstrap is run. The bootstrap downloads the pinned Gradle 9.2.0 distribution to the normal Gradle user cache.
 
 ```sh
 ./gradlew build

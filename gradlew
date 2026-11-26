@@ -4,7 +4,7 @@
 set -eu
 
 APP_HOME=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-GRADLE_VERSION=8.14.3
+GRADLE_VERSION=9.2.0
 GRADLE_USER_HOME=${GRADLE_USER_HOME:-"${HOME}/.gradle"}
 DIST_ROOT="$GRADLE_USER_HOME/wrapper/dists/gradle-$GRADLE_VERSION-bin/straight-windcharges"
 GRADLE_BIN="$DIST_ROOT/gradle-$GRADLE_VERSION/bin/gradle"
