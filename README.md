@@ -4,7 +4,7 @@ A Fabric mod for Minecraft 1.21.11 that makes Wind Charges travel on a straight 
 
 ## Build
 
-Requirements: Java 21 (JDK), and `curl` or `wget` plus `unzip` the first time the included lightweight Gradle bootstrap is run. The bootstrap downloads the pinned Gradle 9.8.2 distribution to the normal Gradle user cache. On Windows, use `gradlew.bat build`; on macOS/Linux use:
+Requirements: Java 21 (JDK), and `curl` or `wget` plus `unzip` the first time the included lightweight Gradle bootstrap is run. The bootstrap downloads the pinned Gradle 9.2.0 distribution to the normal Gradle user cache. On Windows, use `gradlew.bat build`; on macOS/Linux use:
 
 ```sh
 ./gradlew build
@@ -18,4 +18,4 @@ The compiled mod JAR is written to `build/libs/straight-windcharges-1.0.0.jar`.
 - `AbstractHurtingProjectilePowerAccessor` provides Mixin access to the vanilla acceleration fields.
 - The mod metadata uses `environment: "*"`; the gameplay changes run on the logical server, including the integrated server.
 
-The build uses Fabric Loom and Mojang Official Mappings. There is no Fabric API or NeoForge dependency.
+The build uses Fabric Loom, Mojang Official Mappings, and the Fabric API 0.141.6 release for Minecraft 1.21.11. NeoForge support is not included.

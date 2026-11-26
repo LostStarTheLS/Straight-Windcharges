@@ -1,7 +1,7 @@
 @echo off
 setlocal
 set "APP_HOME=%~dp0"
-set "GRADLE_VERSION=9.8.2"
+set "GRADLE_VERSION=9.2.0"
 if not defined GRADLE_USER_HOME set "GRADLE_USER_HOME=%USERPROFILE%\.gradle"
 set "DIST_ROOT=%GRADLE_USER_HOME%\wrapper\dists\gradle-%GRADLE_VERSION%-bin\straight-windcharges"
 set "GRADLE_BIN=%DIST_ROOT%\gradle-%GRADLE_VERSION%\bin\gradle.bat"
