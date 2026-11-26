@@ -16,12 +16,17 @@ repositories {
 }
 
 loom {
+    splitEnvironmentSourceSets()
+
     mods {
-        sw {
+        "sw" {
             sourceSet sourceSets.main
+            sourceSet sourceSets.client
         }
     }
+
     mixin {
+        useLegacyMixinAp = true
         defaultRefmapName = 'sw.refmap.json'
     }
 }
