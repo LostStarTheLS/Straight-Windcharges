@@ -1,7 +1,5 @@
 package com.ls.straightwindcharges.mixin;
 
-import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
-import net.minecraft.world.entity.projectile.AbstractWindCharge;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -12,14 +10,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 /**
  * Keeps Wind Charges (including Breeze Wind Charges) on their original
  * velocity vector: no inertia loss and no randomized inaccuracy/acceleration.
+ * String targets avoid compile-time coupling to Minecraft's mapped class
+ * packages; Loom remaps the targets for the game runtime.
  */
-@Mixin(AbstractHurtingProjectile.class)
+@Mixin(targets = "net.minecraft.world.entity.projectile.AbstractHurtingProjectile")
 abstract class AbstractHurtingProjectileMixin {
-    /**
-     * shoot() adds gaussian noise to its direction according to inaccuracy.
-     * Suppress that argument for Wind Charges only; other hurting projectiles
-     * keep their normal vanilla behavior.
-     */
     @ModifyVariable(
             method = "shoot(DDDFF)V",
             at = @At("HEAD"),
@@ -27,25 +22,21 @@ abstract class AbstractHurtingProjectileMixin {
             ordinal = 1
     )
     private float sw$removeWindChargeInaccuracy(float inaccuracy) {
-        return (Object) this instanceof AbstractWindCharge ? 0.0F : inaccuracy;
+        return (Object) this instanceof WindChargeMarker ? 0.0F : inaccuracy;
     }
 
-    /** Clear acceleration after every shot, including shots made through
-     * Projectile.shootFromRotation (which delegates to this shoot method).
-     */
     @Inject(method = "shoot(DDDFF)V", at = @At("RETURN"))
     private void sw$clearWindChargeAccelerationAfterShoot(
             double x, double y, double z, float velocity, float inaccuracy, CallbackInfo ci
     ) {
-        if ((Object) this instanceof AbstractWindCharge) {
+        if ((Object) this instanceof WindChargeMarker) {
             sw$clearAcceleration();
         }
     }
 
-    /** The vanilla inertia is 0.95 in air, which steadily slows projectiles. */
     @Inject(method = "getInertia()F", at = @At("RETURN"), cancellable = true)
     private void sw$useUnitWindChargeInertia(CallbackInfoReturnable<Float> cir) {
-        if ((Object) this instanceof AbstractWindCharge) {
+        if ((Object) this instanceof WindChargeMarker) {
             cir.setReturnValue(1.0F);
         }
     }

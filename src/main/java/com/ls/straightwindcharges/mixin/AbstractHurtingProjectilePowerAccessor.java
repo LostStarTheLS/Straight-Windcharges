@@ -1,11 +1,10 @@
 package com.ls.straightwindcharges.mixin;
 
-import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
-/** Access to the projectile's per-tick acceleration vector. */
-@Mixin(AbstractHurtingProjectile.class)
+/** Access to AbstractHurtingProjectile's per-tick acceleration vector. */
+@Mixin(targets = "net.minecraft.world.entity.projectile.AbstractHurtingProjectile")
 public interface AbstractHurtingProjectilePowerAccessor {
     @Accessor("xPower")
     void sw$setXPower(double value);
