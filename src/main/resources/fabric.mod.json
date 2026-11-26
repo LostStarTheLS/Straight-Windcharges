@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "sw",
+  "version": "${version}",
+  "name": "Straight Windcharges",
+  "description": "Eliminates air drag and random directional drift from Wind Charges, allowing them to travel in a perfectly straight line at constant speed indefinitely.",
+  "authors": [
+    "LS"
+  ],
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.ls.straightwindcharges.StraightWindcharges"
+    ]
+  },
+  "mixins": [
+    "sw.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "~1.21.11",
+    "java": ">=21"
+  }
+}

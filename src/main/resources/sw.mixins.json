@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.ls.straightwindcharges.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "sw.refmap.json",
+  "mixins": [
+    "AbstractHurtingProjectileMixin",
+    "AbstractHurtingProjectilePowerAccessor",
+    "AbstractWindChargeMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
